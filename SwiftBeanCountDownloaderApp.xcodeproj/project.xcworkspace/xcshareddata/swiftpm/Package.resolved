@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "FileSelectorView",
+        "repositoryURL": "https://github.com/Nef10/FileSelectorView.git",
+        "state": {
+          "branch": null,
+          "revision": "d6173b5a86de42bacf0dcd6f9f04f4144bed8f7f",
+          "version": "1.0.0"
+        }
+      },
+      {
+        "package": "KeychainAccess",
+        "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess.git",
+        "state": {
+          "branch": null,
+          "revision": "3d0ea2c0806791abcc5d7f0d9f62f1cfd4a7264d",
+          "version": "4.2.0"
+        }
+      },
+      {
+        "package": "WealthsimpleDownloader",
+        "repositoryURL": "https://github.com/Nef10/WealthsimpleDownloader.git",
+        "state": {
+          "branch": null,
+          "revision": "5c606cae2752d46f6cb5b306506f30948b21a2c9",
+          "version": "0.0.2"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

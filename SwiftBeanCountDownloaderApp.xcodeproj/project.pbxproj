@@ -3,22 +3,25 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F97C212E24BC2297006C91C7 /* SwiftBeanCountDownloaderAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97C212D24BC2297006C91C7 /* SwiftBeanCountDownloaderAppApp.swift */; };
+		F97B530924BD912600255DBA /* WealthsimpleDownloader in Frameworks */ = {isa = PBXBuildFile; productRef = F97B530824BD912600255DBA /* WealthsimpleDownloader */; };
+		F97B530C24BD917500255DBA /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = F97B530B24BD917500255DBA /* KeychainAccess */; };
+		F97B530F24BEDEA400255DBA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97B530E24BEDEA400255DBA /* Model.swift */; };
+		F97C212E24BC2297006C91C7 /* SwiftBeanCountDownloaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97C212D24BC2297006C91C7 /* SwiftBeanCountDownloaderApp.swift */; };
 		F97C213024BC2297006C91C7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97C212F24BC2297006C91C7 /* ContentView.swift */; };
 		F97C213224BC2299006C91C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F97C213124BC2299006C91C7 /* Assets.xcassets */; };
-		F97C213524BC2299006C91C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F97C213424BC2299006C91C7 /* Preview Assets.xcassets */; };
+		F97C215724BC36DB006C91C7 /* FileSelectorView in Frameworks */ = {isa = PBXBuildFile; productRef = F97C215624BC36DB006C91C7 /* FileSelectorView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F97B530E24BEDEA400255DBA /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		F97C212A24BC2297006C91C7 /* SwiftBeanCountDownloaderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBeanCountDownloaderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F97C212D24BC2297006C91C7 /* SwiftBeanCountDownloaderAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBeanCountDownloaderAppApp.swift; sourceTree = "<group>"; };
+		F97C212D24BC2297006C91C7 /* SwiftBeanCountDownloaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBeanCountDownloaderApp.swift; sourceTree = "<group>"; };
 		F97C212F24BC2297006C91C7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F97C213124BC2299006C91C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F97C213424BC2299006C91C7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F97C213624BC2299006C91C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F97C213724BC2299006C91C7 /* SwiftBeanCountDownloaderApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftBeanCountDownloaderApp.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -28,6 +31,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F97B530924BD912600255DBA /* WealthsimpleDownloader in Frameworks */,
+				F97C215724BC36DB006C91C7 /* FileSelectorView in Frameworks */,
+				F97B530C24BD917500255DBA /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -39,6 +45,7 @@
 			children = (
 				F97C212C24BC2297006C91C7 /* SwiftBeanCountDownloaderApp */,
 				F97C212B24BC2297006C91C7 /* Products */,
+				F97C213F24BC25DE006C91C7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -53,22 +60,21 @@
 		F97C212C24BC2297006C91C7 /* SwiftBeanCountDownloaderApp */ = {
 			isa = PBXGroup;
 			children = (
-				F97C212D24BC2297006C91C7 /* SwiftBeanCountDownloaderAppApp.swift */,
+				F97C212D24BC2297006C91C7 /* SwiftBeanCountDownloaderApp.swift */,
 				F97C212F24BC2297006C91C7 /* ContentView.swift */,
+				F97B530E24BEDEA400255DBA /* Model.swift */,
 				F97C213124BC2299006C91C7 /* Assets.xcassets */,
 				F97C213624BC2299006C91C7 /* Info.plist */,
 				F97C213724BC2299006C91C7 /* SwiftBeanCountDownloaderApp.entitlements */,
-				F97C213324BC2299006C91C7 /* Preview Content */,
 			);
 			path = SwiftBeanCountDownloaderApp;
 			sourceTree = "<group>";
 		};
-		F97C213324BC2299006C91C7 /* Preview Content */ = {
+		F97C213F24BC25DE006C91C7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F97C213424BC2299006C91C7 /* Preview Assets.xcassets */,
 			);
-			path = "Preview Content";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -78,6 +84,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F97C213A24BC2299006C91C7 /* Build configuration list for PBXNativeTarget "SwiftBeanCountDownloaderApp" */;
 			buildPhases = (
+				F97B530D24BEDE6D00255DBA /* Swiftlint */,
 				F97C212624BC2297006C91C7 /* Sources */,
 				F97C212724BC2297006C91C7 /* Frameworks */,
 				F97C212824BC2297006C91C7 /* Resources */,
@@ -87,6 +94,11 @@
 			dependencies = (
 			);
 			name = SwiftBeanCountDownloaderApp;
+			packageProductDependencies = (
+				F97C215624BC36DB006C91C7 /* FileSelectorView */,
+				F97B530824BD912600255DBA /* WealthsimpleDownloader */,
+				F97B530B24BD917500255DBA /* KeychainAccess */,
+			);
 			productName = SwiftBeanCountDownloaderApp;
 			productReference = F97C212A24BC2297006C91C7 /* SwiftBeanCountDownloaderApp.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +126,11 @@
 				Base,
 			);
 			mainGroup = F97C212124BC2297006C91C7;
+			packageReferences = (
+				F97C215524BC36DB006C91C7 /* XCRemoteSwiftPackageReference "FileSelectorView" */,
+				F97B530724BD912600255DBA /* XCRemoteSwiftPackageReference "WealthsimpleDownloader" */,
+				F97B530A24BD917500255DBA /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			productRefGroup = F97C212B24BC2297006C91C7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -128,20 +145,41 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F97C213524BC2299006C91C7 /* Preview Assets.xcassets in Resources */,
 				F97C213224BC2299006C91C7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		F97B530D24BEDE6D00255DBA /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "swiftlint --strict\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F97C212624BC2297006C91C7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F97B530F24BEDEA400255DBA /* Model.swift in Sources */,
 				F97C213024BC2297006C91C7 /* ContentView.swift in Sources */,
-				F97C212E24BC2297006C91C7 /* SwiftBeanCountDownloaderAppApp.swift in Sources */,
+				F97C212E24BC2297006C91C7 /* SwiftBeanCountDownloaderApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,7 +309,7 @@
 				CODE_SIGN_ENTITLEMENTS = SwiftBeanCountDownloaderApp/SwiftBeanCountDownloaderApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"SwiftBeanCountDownloaderApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftBeanCountDownloaderApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -293,7 +331,7 @@
 				CODE_SIGN_ENTITLEMENTS = SwiftBeanCountDownloaderApp/SwiftBeanCountDownloaderApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"SwiftBeanCountDownloaderApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftBeanCountDownloaderApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -329,6 +367,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F97B530724BD912600255DBA /* XCRemoteSwiftPackageReference "WealthsimpleDownloader" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Nef10/WealthsimpleDownloader.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.0.2;
+			};
+		};
+		F97B530A24BD917500255DBA /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
+		F97C215524BC36DB006C91C7 /* XCRemoteSwiftPackageReference "FileSelectorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Nef10/FileSelectorView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F97B530824BD912600255DBA /* WealthsimpleDownloader */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F97B530724BD912600255DBA /* XCRemoteSwiftPackageReference "WealthsimpleDownloader" */;
+			productName = WealthsimpleDownloader;
+		};
+		F97B530B24BD917500255DBA /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F97B530A24BD917500255DBA /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+		F97C215624BC36DB006C91C7 /* FileSelectorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F97C215524BC36DB006C91C7 /* XCRemoteSwiftPackageReference "FileSelectorView" */;
+			productName = FileSelectorView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F97C212224BC2297006C91C7 /* Project object */;
 }
