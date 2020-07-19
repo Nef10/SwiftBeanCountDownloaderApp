@@ -12,6 +12,11 @@ import SwiftBeanCountParser
 import SwiftUI
 import WealthsimpleDownloader
 
+enum WealthsimpleConversionError: Error {
+    case missingCommodity(String)
+    case missingAccount(String, String)
+}
+
 class Model: ObservableObject {
 
     class KeyChainCredentialStorage: CredentialStorage {
@@ -37,6 +42,8 @@ class Model: ObservableObject {
             }
         }
     }
+    @Published private(set) var balances = [Balance]()
+    @Published private(set) var prices = [Price]()
     @Published private(set) var activityText = ""
     @Published private(set) var error: Error? {
         didSet {
@@ -54,7 +61,7 @@ class Model: ObservableObject {
             needsAuthentication = authenticationFinishedCallback != nil
         }
     }
-    private var cancellable: AnyCancellable?
+    private var positionSubscription: AnyCancellable?
 
     init() {
         wealthsimpleDownloader = WealthsimpleDownloader(authenticationCallback: authenticationCallback, credentialStorage: credentialStorage)
@@ -79,37 +86,39 @@ class Model: ObservableObject {
         }
     }
 
-    func download() {
+    private func download() {
         startAuthentication { success in
             guard success else {
                 return
             }
-            DispatchQueue.main.async {
-                self.downloadAccounts()
-            }
+            self.downloadAccounts()
         }
     }
 
     private func downloadAccounts() {
-        self.buzy = true
-        self.activityText = "Downloading Accounts"
+        DispatchQueue.main.async {
+            self.buzy = true
+            self.activityText = "Downloading Accounts"
+        }
         self.wealthsimpleDownloader.getAccounts { result in
-            DispatchQueue.main.async {
-                switch result {
-                case let .failure(error):
+            switch result {
+            case let .failure(error):
+                DispatchQueue.main.async {
                     self.error = error
                     self.authenticationSuccessful = false
                     self.buzy = false
-                case let .success(accounts):
-                    self.downloadPositions(accounts: accounts)
                 }
+            case let .success(accounts):
+                self.downloadPositions(accounts: accounts)
             }
         }
     }
 
     private func downloadPositions(accounts: [WealthsimpleAccount]) {
-        self.activityText = "Downloading Positions"
-        cancellable = positionPublisher
+        DispatchQueue.main.async {
+            self.activityText = "Downloading Positions"
+        }
+        positionSubscription = positionPublisher
             .tryMap { value -> ([Price], [Balance]) in
                 DispatchQueue.main.async {
                     self.activityText = "Converting to Beancount"
@@ -117,6 +126,9 @@ class Model: ObservableObject {
                 return try self.mapPositionsToPriceAndBalance(value)
             }
             .collect(accounts.count)
+            .map {
+                self.combinePricesAndBalances($0)
+            }
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
                 if case let .failure(error) = completion {
@@ -130,8 +142,8 @@ class Model: ObservableObject {
             })
 
         for account in accounts {
-            self.wealthsimpleDownloader.getPositions(in: account) { result in
-                DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.global(qos: .userInitiated).async {
+                self.wealthsimpleDownloader.getPositions(in: account) { result in
                     switch result {
                     case let .failure(error):
                         self.positionPublisher.send(completion: .failure(error))
@@ -143,9 +155,18 @@ class Model: ObservableObject {
         }
     }
 
+    private func combinePricesAndBalances(_ values: [([Price], [Balance])]) -> ([Price], [Balance]) {
+        var prices = [Price]()
+        var balances = [Balance]()
+        for (accountPrices, accountBalances) in values {
+            prices.append(contentsOf: accountPrices)
+            balances.append(contentsOf: accountBalances)
+        }
+        return (prices, balances)
+    }
+
     private func mapPositionsToPriceAndBalance(_ values: (WealthsimpleAccount, [Position])) throws -> ([Price], [Balance]) {
         let (account, positions) = values
-        let accountName = try AccountName("Assets:\(account.accountType.rawValue)")
         var prices = [Price]()
         var balances = [Balance]()
         try positions.forEach {
@@ -153,20 +174,47 @@ class Model: ObservableObject {
             let (balanceAmountNumber, balanceDecimalDigits) = ParserUtils.parseAmountDecimalFrom(string: $0.quantity)
             if $0.asset.type != .currency {
                 try prices.append(Price(date: $0.priceDate,
-                                        commoditySymbol: $0.asset.symbol,
+                                        commoditySymbol: try ledgerSymbolFor($0.asset),
                                         amount: Amount(number: priceAmountNumber, commoditySymbol: $0.priceCurrency, decimalDigits: priceDecimalDigits)))
             }
             balances.append(Balance(date: Date(),
-                                    accountName: accountName,
-                                    amount: Amount(number: balanceAmountNumber, commoditySymbol: $0.asset.symbol, decimalDigits: balanceDecimalDigits)))
+                                    accountName: try ledgerAccountNameFor(account, asset: $0.asset),
+                                    amount: Amount(number: balanceAmountNumber, commoditySymbol: try ledgerSymbolFor($0.asset), decimalDigits: balanceDecimalDigits)))
         }
         if balances.isEmpty {
             balances.append(Balance(date: Date(),
-                                    accountName: accountName,
+                                    accountName: try ledgerAccountNameFor(account),
                                     amount: Amount(number: 0, commoditySymbol: account.currency, decimalDigits: 0)))
         }
         return (prices, balances)
 
+    }
+
+    private func ledgerSymbolFor(_ asset: Asset) throws -> String {
+        if asset.type == .currency {
+            return asset.symbol
+        } else {
+            let commodity = ledger.commodities.first {
+                $0.metaData["wealthsimple"] == asset.symbol
+            }
+            guard let symbol = commodity?.symbol else {
+                throw WealthsimpleConversionError.missingCommodity(asset.symbol)
+            }
+            return symbol
+        }
+    }
+
+    private func ledgerAccountNameFor(_ account: WealthsimpleAccount, asset: Asset? = nil) throws -> AccountName {
+        let symbol = asset != nil ? asset!.symbol : account.currency
+        let type = account.accountType.rawValue
+        let account = ledger.accounts.first {
+            $0.metaData["wealthsimple-symbol"] == symbol &&
+                $0.metaData["wealthsimple-type"] == type
+        }
+        guard let accountName = account?.name else {
+            throw WealthsimpleConversionError.missingAccount(symbol, type)
+        }
+        return accountName
     }
 
     private func startAuthentication(completion: @escaping (Bool) -> Void) {
@@ -194,4 +242,18 @@ class Model: ObservableObject {
         }
     }
 
+}
+
+extension WealthsimpleConversionError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case let .missingCommodity(symbol):
+            return "The Commodity \(symbol) was not found in your ledger. Please make sure you add the metadata \"wealthsimple: \"\(symbol)\"\" to it."
+        case let .missingAccount(symbol, type):
+            return """
+                The Account of type \(type) for symbol \(symbol) was not found in your ledger. \
+                Please make sure you add the metadata \"wealthsimple-symbol: \"\(symbol)\" wealthsimple-type: \"\(type)\"\" to it.
+                """
+        }
+    }
 }
