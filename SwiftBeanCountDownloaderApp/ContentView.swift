@@ -23,54 +23,51 @@ struct ContentView: View {
     @ObservedObject private var model: Model = Model()
 
     var body: some View {
-        ZStack {
-            VStack(alignment: .leading) {
-                HStack(alignment: .firstTextBaseline) {
-                    Text("Ledger:")
-                    FileSelectorView(allowedFileTypes: ["beancount"], url: self.$ledgerURL)
-                    Spacer()
-                }.padding()
+        VStack(alignment: .leading) {
+            HStack(alignment: .firstTextBaseline) {
+                Text("Ledger:")
+                FileSelectorView(allowedFileTypes: ["beancount"], url: self.$ledgerURL).disabled(model.buzy)
                 Spacer()
-                HStack {
-                    Spacer()
-                    Button("Download Wealthsimple Data") {
-                        model.startAuthentication { success in
-                            if success {
-                                model.download()
-                            }
-                        }
+            }.padding()
+            Spacer()
+            HStack {
+                Spacer()
+                VStack {
+                    if model.buzy {
+                        Text(model.activityText).frame(width: 200, height: 20)
+                        ProgressView().progressViewStyle(LinearProgressViewStyle()).frame(width: 200, height: 15, alignment: .trailing)
+                    } else {
+                        EmptyView().frame(width: 200, height: 35, alignment: .trailing)
                     }
-                    .disabled(ledgerURL == nil)
-                    .padding()
-                }
-            }.sheet(isPresented: $model.needsAuthentication) {
-                authenticationSheet
+                    Button("Download Wealthsimple Data") {
+                        model.start(ledgerURL: ledgerURL!)
+                    }.disabled(ledgerURL == nil || model.buzy)
+                }.padding()
             }
-            if model.buzy {
-                loadingView
-            }
-        }/*.sheet(isPresented: $model.showError) {
-            Text("Error").font(.caption)
-            Text(model.error?.localizedDescription ?? "")
-        }*/
-    }
-
-    private var loadingView: some View {
-        Group {
-            Spacer()
-            ProgressView()
-            Spacer()
-        }.blur(radius: 20)
+        }
+        .sheet(isPresented: $model.needsAuthentication) {
+            authenticationSheet
+        }
+        .alert(isPresented: $model.showError) {
+            Alert(title: Text("Error"), message: Text(model.error?.localizedDescription ?? ""), dismissButton: .default(Text("OK")))
+        }
     }
 
     private var authenticationSheet: some View {
         VStack {
+            Text("Login").font(.title2)
             TextField("Username", text: $userName)
             SecureField("Password", text: $password)
             TextField("OTP", text: $otp)
             Button("Login") {
                 model.authenticate(username: userName, password: password, otp: otp)
-            }.disabled(userName.isEmpty || password.isEmpty || otp.isEmpty).padding(.top)
-        }.padding().frame(minWidth: 150, idealWidth: 200, maxWidth: .infinity, minHeight: 175, idealHeight: 175, maxHeight: .infinity)
+                password = ""
+                otp = ""
+            }
+            .disabled(userName.isEmpty || password.isEmpty || otp.isEmpty)
+            .padding(.top)
+        }
+        .padding()
+        .frame(minWidth: 150, idealWidth: 200, maxWidth: .infinity, minHeight: 175, idealHeight: 175, maxHeight: .infinity)
     }
 }

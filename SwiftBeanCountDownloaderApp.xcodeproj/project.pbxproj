@@ -10,20 +10,24 @@
 		F97B530924BD912600255DBA /* WealthsimpleDownloader in Frameworks */ = {isa = PBXBuildFile; productRef = F97B530824BD912600255DBA /* WealthsimpleDownloader */; };
 		F97B530C24BD917500255DBA /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = F97B530B24BD917500255DBA /* KeychainAccess */; };
 		F97B530F24BEDEA400255DBA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97B530E24BEDEA400255DBA /* Model.swift */; };
-		F97C212E24BC2297006C91C7 /* SwiftBeanCountDownloaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97C212D24BC2297006C91C7 /* SwiftBeanCountDownloaderApp.swift */; };
+		F97C212E24BC2297006C91C7 /* SwiftBeanCountDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97C212D24BC2297006C91C7 /* SwiftBeanCountDownloader.swift */; };
 		F97C213024BC2297006C91C7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97C212F24BC2297006C91C7 /* ContentView.swift */; };
 		F97C213224BC2299006C91C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F97C213124BC2299006C91C7 /* Assets.xcassets */; };
 		F97C215724BC36DB006C91C7 /* FileSelectorView in Frameworks */ = {isa = PBXBuildFile; productRef = F97C215624BC36DB006C91C7 /* FileSelectorView */; };
+		F9E8C6F224C41151000A2F66 /* SwiftBeanCountModel in Frameworks */ = {isa = PBXBuildFile; productRef = F9E8C6F124C41151000A2F66 /* SwiftBeanCountModel */; };
+		F9E8C6F424C412BF000A2F66 /* WealthsimpleAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8C6F324C412BF000A2F66 /* WealthsimpleAccount.swift */; };
+		F9E8C6F724C41CAD000A2F66 /* SwiftBeanCountParser in Frameworks */ = {isa = PBXBuildFile; productRef = F9E8C6F624C41CAD000A2F66 /* SwiftBeanCountParser */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F97B530E24BEDEA400255DBA /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		F97C212A24BC2297006C91C7 /* SwiftBeanCountDownloaderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBeanCountDownloaderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F97C212D24BC2297006C91C7 /* SwiftBeanCountDownloaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBeanCountDownloaderApp.swift; sourceTree = "<group>"; };
+		F97C212D24BC2297006C91C7 /* SwiftBeanCountDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBeanCountDownloader.swift; sourceTree = "<group>"; };
 		F97C212F24BC2297006C91C7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F97C213124BC2299006C91C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F97C213624BC2299006C91C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F97C213724BC2299006C91C7 /* SwiftBeanCountDownloaderApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftBeanCountDownloaderApp.entitlements; sourceTree = "<group>"; };
+		F9E8C6F324C412BF000A2F66 /* WealthsimpleAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WealthsimpleAccount.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,8 +35,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9E8C6F224C41151000A2F66 /* SwiftBeanCountModel in Frameworks */,
 				F97B530924BD912600255DBA /* WealthsimpleDownloader in Frameworks */,
 				F97C215724BC36DB006C91C7 /* FileSelectorView in Frameworks */,
+				F9E8C6F724C41CAD000A2F66 /* SwiftBeanCountParser in Frameworks */,
 				F97B530C24BD917500255DBA /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -60,12 +66,13 @@
 		F97C212C24BC2297006C91C7 /* SwiftBeanCountDownloaderApp */ = {
 			isa = PBXGroup;
 			children = (
-				F97C212D24BC2297006C91C7 /* SwiftBeanCountDownloaderApp.swift */,
+				F97C212D24BC2297006C91C7 /* SwiftBeanCountDownloader.swift */,
 				F97C212F24BC2297006C91C7 /* ContentView.swift */,
 				F97B530E24BEDEA400255DBA /* Model.swift */,
 				F97C213124BC2299006C91C7 /* Assets.xcassets */,
 				F97C213624BC2299006C91C7 /* Info.plist */,
 				F97C213724BC2299006C91C7 /* SwiftBeanCountDownloaderApp.entitlements */,
+				F9E8C6F324C412BF000A2F66 /* WealthsimpleAccount.swift */,
 			);
 			path = SwiftBeanCountDownloaderApp;
 			sourceTree = "<group>";
@@ -98,6 +105,8 @@
 				F97C215624BC36DB006C91C7 /* FileSelectorView */,
 				F97B530824BD912600255DBA /* WealthsimpleDownloader */,
 				F97B530B24BD917500255DBA /* KeychainAccess */,
+				F9E8C6F124C41151000A2F66 /* SwiftBeanCountModel */,
+				F9E8C6F624C41CAD000A2F66 /* SwiftBeanCountParser */,
 			);
 			productName = SwiftBeanCountDownloaderApp;
 			productReference = F97C212A24BC2297006C91C7 /* SwiftBeanCountDownloaderApp.app */;
@@ -130,6 +139,8 @@
 				F97C215524BC36DB006C91C7 /* XCRemoteSwiftPackageReference "FileSelectorView" */,
 				F97B530724BD912600255DBA /* XCRemoteSwiftPackageReference "WealthsimpleDownloader" */,
 				F97B530A24BD917500255DBA /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				F9E8C6F024C41151000A2F66 /* XCRemoteSwiftPackageReference "SwiftBeanCountModel" */,
+				F9E8C6F524C41CAD000A2F66 /* XCRemoteSwiftPackageReference "SwiftBeanCountParser" */,
 			);
 			productRefGroup = F97C212B24BC2297006C91C7 /* Products */;
 			projectDirPath = "";
@@ -177,9 +188,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9E8C6F424C412BF000A2F66 /* WealthsimpleAccount.swift in Sources */,
 				F97B530F24BEDEA400255DBA /* Model.swift in Sources */,
 				F97C213024BC2297006C91C7 /* ContentView.swift in Sources */,
-				F97C212E24BC2297006C91C7 /* SwiftBeanCountDownloaderApp.swift in Sources */,
+				F97C212E24BC2297006C91C7 /* SwiftBeanCountDownloader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,7 +386,7 @@
 			repositoryURL = "https://github.com/Nef10/WealthsimpleDownloader.git";
 			requirement = {
 				kind = exactVersion;
-				version = 0.0.2;
+				version = 0.0.3;
 			};
 		};
 		F97B530A24BD917500255DBA /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
@@ -391,6 +403,22 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
+			};
+		};
+		F9E8C6F024C41151000A2F66 /* XCRemoteSwiftPackageReference "SwiftBeanCountModel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Nef10/SwiftBeanCountModel.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.1.2;
+			};
+		};
+		F9E8C6F524C41CAD000A2F66 /* XCRemoteSwiftPackageReference "SwiftBeanCountParser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Nef10/SwiftBeanCountParser.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.1.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -410,6 +438,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F97C215524BC36DB006C91C7 /* XCRemoteSwiftPackageReference "FileSelectorView" */;
 			productName = FileSelectorView;
+		};
+		F9E8C6F124C41151000A2F66 /* SwiftBeanCountModel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E8C6F024C41151000A2F66 /* XCRemoteSwiftPackageReference "SwiftBeanCountModel" */;
+			productName = SwiftBeanCountModel;
+		};
+		F9E8C6F624C41CAD000A2F66 /* SwiftBeanCountParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E8C6F524C41CAD000A2F66 /* XCRemoteSwiftPackageReference "SwiftBeanCountParser" */;
+			productName = SwiftBeanCountParser;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
