@@ -45,12 +45,36 @@ struct ContentView: View {
                 }.padding()
             }
         }
-        .sheet(isPresented: $model.needsAuthentication) {
-            authenticationSheet
+        .sheet(isPresented: $model.showSheet) {
+            switch model.sheetType {
+            case .authentication:
+                authenticationSheet
+            case .results:
+                resultsSheet
+            }
         }
         .alert(isPresented: $model.showError) {
             Alert(title: Text("Error"), message: Text(model.error?.localizedDescription ?? ""), dismissButton: .default(Text("OK")))
         }
+    }
+
+    private var resultText: String {
+        let (prices, balances) = model.result
+        return "\(balances.map { $0.description }.joined(separator: "\n"))\n\n\(prices.map { $0.description }.joined(separator: "\n"))"
+    }
+
+    private var resultsSheet: some View {
+        VStack {
+            Text("Results").font(.title2)
+            TextEditor(text: .constant(resultText))
+            Spacer()
+            Button("Close") {
+                model.showSheet = false
+            }
+        }
+        .padding()
+        .background(Color(NSColor.windowBackgroundColor))
+        .frame(minWidth: 500, idealWidth: 600, maxWidth: 900, minHeight: 200, idealHeight: 400, maxHeight: .infinity)
     }
 
     private var authenticationSheet: some View {

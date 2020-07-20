@@ -17,6 +17,11 @@ enum WealthsimpleConversionError: Error {
     case missingAccount(String, String)
 }
 
+enum SheetType {
+    case authentication
+    case results
+}
+
 class Model: ObservableObject {
 
     class KeyChainCredentialStorage: CredentialStorage {
@@ -33,8 +38,9 @@ class Model: ObservableObject {
 
     }
 
-    @Published var needsAuthentication: Bool = false
+    @Published var showSheet: Bool = false
     @Published var showError: Bool = false
+    @Published private(set) var sheetType = SheetType.authentication
     @Published private(set) var buzy: Bool = false {
         didSet {
             if !buzy {
@@ -42,8 +48,12 @@ class Model: ObservableObject {
             }
         }
     }
-    @Published private(set) var balances = [Balance]()
-    @Published private(set) var prices = [Price]()
+    @Published private(set) var result = ([Price](), [Balance]()) {
+        didSet {
+            sheetType = .results
+            showSheet = true
+        }
+    }
     @Published private(set) var activityText = ""
     @Published private(set) var error: Error? {
         didSet {
@@ -58,7 +68,10 @@ class Model: ObservableObject {
     private var authenticationSuccessful = false
     private var authenticationFinishedCallback: ((String, String, String) -> Void)? {
         didSet {
-            needsAuthentication = authenticationFinishedCallback != nil
+            if authenticationFinishedCallback != nil {
+                sheetType = .authentication
+                showSheet = true
+            }
         }
     }
     private var positionSubscription: AnyCancellable?
@@ -137,7 +150,7 @@ class Model: ObservableObject {
                 }
                 self.buzy = false
             }, receiveValue: { result in
-                print(".sink() data received \(result)")
+                self.result = result
                 self.buzy = false
             })
 
