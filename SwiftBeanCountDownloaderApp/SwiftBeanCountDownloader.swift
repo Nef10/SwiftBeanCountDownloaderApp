@@ -11,7 +11,7 @@ import SwiftUI
 struct SwiftBeanCountDownloader: App {
     var body: some Scene {
         WindowGroup {
-            ContentView().frame(minWidth: 300, idealWidth: 500, maxWidth: .infinity, minHeight: 150, idealHeight: 250, maxHeight: .infinity)
+            ContentView().frame(minWidth: 300, idealWidth: 500, maxWidth: .infinity, minHeight: 200, idealHeight: 250, maxHeight: .infinity)
         }
     }
 }
