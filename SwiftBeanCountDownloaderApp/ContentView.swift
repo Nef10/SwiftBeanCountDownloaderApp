@@ -59,8 +59,13 @@ struct ContentView: View {
     }
 
     private var resultText: String {
-        let (prices, balances) = model.result
-        return "\(balances.map { $0.description }.joined(separator: "\n"))\n\n\(prices.map { $0.description }.joined(separator: "\n"))"
+        """
+        \(model.resultBalances.map { $0.description }.joined(separator: "\n"))
+
+        \(model.resultPrices.map { $0.description }.joined(separator: "\n"))
+
+        \(model.resultTransactions.map { $0.description }.joined(separator: "\n\n"))
+        """
     }
 
     private var resultsSheet: some View {

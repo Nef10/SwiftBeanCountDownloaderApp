@@ -10,12 +10,7 @@ import KeychainAccess
 import SwiftBeanCountModel
 import SwiftBeanCountParser
 import SwiftUI
-import WealthsimpleDownloader
-
-enum WealthsimpleConversionError: Error {
-    case missingCommodity(String)
-    case missingAccount(String, String)
-}
+import Wealthsimple
 
 enum SheetType {
     case authentication
@@ -38,8 +33,20 @@ class Model: ObservableObject {
 
     }
 
-    @Published var showSheet: Bool = false
-    @Published var showError: Bool = false
+    @Published var showSheet: Bool = false {
+        didSet {
+            if showSheet {
+                self.buzy = false
+            }
+        }
+    }
+    @Published var showError: Bool = false {
+        didSet {
+            if showError {
+                self.buzy = false
+            }
+        }
+    }
     @Published private(set) var sheetType = SheetType.authentication
     @Published private(set) var buzy: Bool = false {
         didSet {
@@ -48,12 +55,9 @@ class Model: ObservableObject {
             }
         }
     }
-    @Published private(set) var result = ([Price](), [Balance]()) {
-        didSet {
-            sheetType = .results
-            showSheet = true
-        }
-    }
+    @Published private(set) var resultPrices = [Price]()
+    @Published private(set) var resultBalances = [Balance]()
+    @Published private(set) var resultTransactions = [SwiftBeanCountModel.Transaction]()
     @Published private(set) var activityText = ""
     @Published private(set) var error: Error? {
         didSet {
@@ -61,10 +65,18 @@ class Model: ObservableObject {
         }
     }
 
+    private let sixtyTwoDays = -60 * 60 * 24 * 62.0
     private let credentialStorage = KeyChainCredentialStorage()
-    private let positionPublisher = PassthroughSubject<(WealthsimpleAccount, [Position]), Position.PositionError>()
+    private let positionPublisher = PassthroughSubject<[Position], Position.PositionError>()
+    private let transactionPublisher = PassthroughSubject<[Wealthsimple.Transaction], Wealthsimple.Transaction.TransactionError>()
     private var wealthsimpleDownloader: WealthsimpleDownloader!
-    private var ledger: Ledger!
+    private var mapper: WealthsimpleLedgerMapper!
+    private var resultAccounts = [Wealthsimple.Account]()
+    private var ledger: Ledger! {
+        didSet {
+            mapper = WealthsimpleLedgerMapper(ledger: ledger)
+        }
+    }
     private var authenticationSuccessful = false
     private var authenticationFinishedCallback: ((String, String, String) -> Void)? {
         didSet {
@@ -74,7 +86,24 @@ class Model: ObservableObject {
             }
         }
     }
+    private var finishedPositions = false {
+        didSet {
+            if finishedPositions && finishedTransactions {
+                sheetType = .results
+                showSheet = true
+            }
+        }
+    }
+    private var finishedTransactions = false {
+        didSet {
+            if finishedPositions && finishedTransactions {
+                sheetType = .results
+                showSheet = true
+            }
+        }
+    }
     private var positionSubscription: AnyCancellable?
+    private var transactionSubscription: AnyCancellable?
 
     init() {
         wealthsimpleDownloader = WealthsimpleDownloader(authenticationCallback: authenticationCallback, credentialStorage: credentialStorage)
@@ -88,10 +117,17 @@ class Model: ObservableObject {
 
     func start(ledgerURL: URL) {
         self.buzy = true
+        self.finishedPositions = false
+        self.finishedTransactions = false
+        self.resultPrices = []
+        self.resultBalances = []
+        self.resultTransactions = []
+        self.resultAccounts = []
         self.activityText = "Loading Ledger"
         DispatchQueue.global(qos: .userInitiated).async {
             do {
                 self.ledger = try Parser.parse(contentOf: ledgerURL)
+                self.mapper.accounts = []
                 self.download()
             } catch {
                 self.error = error
@@ -110,7 +146,6 @@ class Model: ObservableObject {
 
     private func downloadAccounts() {
         DispatchQueue.main.async {
-            self.buzy = true
             self.activityText = "Downloading Accounts"
         }
         self.wealthsimpleDownloader.getAccounts { result in
@@ -119,115 +154,98 @@ class Model: ObservableObject {
                 DispatchQueue.main.async {
                     self.error = error
                     self.authenticationSuccessful = false
-                    self.buzy = false
                 }
             case let .success(accounts):
-                self.downloadPositions(accounts: accounts)
+                self.resultAccounts = accounts
+                self.mapper.accounts = accounts
+                self.downloadPositions()
             }
         }
     }
 
-    private func downloadPositions(accounts: [WealthsimpleAccount]) {
+    private func downloadPositions() {
         DispatchQueue.main.async {
             self.activityText = "Downloading Positions"
         }
         positionSubscription = positionPublisher
             .tryMap { value -> ([Price], [Balance]) in
                 DispatchQueue.main.async {
-                    self.activityText = "Converting to Beancount"
+                    self.activityText = "Converting Positions"
                 }
-                return try self.mapPositionsToPriceAndBalance(value)
+                return try self.mapper.mapPositionsToPriceAndBalance(value)
             }
-            .collect(accounts.count)
-            .map {
-                self.combinePricesAndBalances($0)
-            }
+            .collect(resultAccounts.count)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
                 if case let .failure(error) = completion {
                     self.error = error
                     self.authenticationSuccessful = false
                 }
-                self.buzy = false
-            }, receiveValue: { result in
-                self.result = result
-                self.buzy = false
+            }, receiveValue: { values in
+                for (accountPrices, accountBalances) in values {
+                    self.resultPrices.append(contentsOf: accountPrices)
+                    self.resultBalances.append(contentsOf: accountBalances)
+                }
+                self.resultPrices.sort { $0.date < $1.date }
+                self.resultBalances.sort { $0.date < $1.date }
+                self.finishedPositions = true
+                self.downloadTransactions()
             })
 
-        for account in accounts {
+        resultAccounts.forEach { account in
             DispatchQueue.global(qos: .userInitiated).async {
-                self.wealthsimpleDownloader.getPositions(in: account) { result in
+                self.wealthsimpleDownloader.getPositions(in: account, date: nil) { result in
                     switch result {
                     case let .failure(error):
                         self.positionPublisher.send(completion: .failure(error))
                     case let .success(positions):
-                        self.positionPublisher.send((account, positions))
+                        self.positionPublisher.send(positions)
                     }
                 }
             }
         }
     }
 
-    private func combinePricesAndBalances(_ values: [([Price], [Balance])]) -> ([Price], [Balance]) {
-        var prices = [Price]()
-        var balances = [Balance]()
-        for (accountPrices, accountBalances) in values {
-            prices.append(contentsOf: accountPrices)
-            balances.append(contentsOf: accountBalances)
+    private func downloadTransactions() {
+        DispatchQueue.main.async {
+            self.activityText = "Downloading Transactions"
         }
-        return (prices, balances)
-    }
-
-    private func mapPositionsToPriceAndBalance(_ values: (WealthsimpleAccount, [Position])) throws -> ([Price], [Balance]) {
-        let (account, positions) = values
-        var prices = [Price]()
-        var balances = [Balance]()
-        try positions.forEach {
-            let (priceAmountNumber, priceDecimalDigits) = ParserUtils.parseAmountDecimalFrom(string: $0.priceAmount)
-            let (balanceAmountNumber, balanceDecimalDigits) = ParserUtils.parseAmountDecimalFrom(string: $0.quantity)
-            if $0.asset.type != .currency {
-                try prices.append(Price(date: $0.priceDate,
-                                        commoditySymbol: try ledgerSymbolFor($0.asset),
-                                        amount: Amount(number: priceAmountNumber, commoditySymbol: $0.priceCurrency, decimalDigits: priceDecimalDigits)))
+        transactionSubscription = transactionPublisher
+            .tryMap { value -> ([Price], [SwiftBeanCountModel.Transaction]) in
+                DispatchQueue.main.async {
+                    self.activityText = "Converting Transactions"
+                }
+                return try self.mapper.mapTransactionsToPriceAndTransactions(value)
             }
-            balances.append(Balance(date: Date(),
-                                    accountName: try ledgerAccountNameFor(account, asset: $0.asset),
-                                    amount: Amount(number: balanceAmountNumber, commoditySymbol: try ledgerSymbolFor($0.asset), decimalDigits: balanceDecimalDigits)))
-        }
-        if balances.isEmpty {
-            balances.append(Balance(date: Date(),
-                                    accountName: try ledgerAccountNameFor(account),
-                                    amount: Amount(number: 0, commoditySymbol: account.currency, decimalDigits: 0)))
-        }
-        return (prices, balances)
+            .collect(resultAccounts.count)
+            .receive(on: RunLoop.main)
+            .sink(receiveCompletion: { completion in
+                if case let .failure(error) = completion {
+                    self.error = error
+                    self.authenticationSuccessful = false
+                }
+            }, receiveValue: { values in
+                for (accountPrices, accountTransactions) in values {
+                    self.resultPrices.append(contentsOf: accountPrices)
+                    self.resultTransactions.append(contentsOf: accountTransactions)
+                }
+                self.resultPrices.sort { $0.date < $1.date }
+                self.resultTransactions.sort { $0.metaData.date < $1.metaData.date }
+                self.finishedTransactions = true
+            })
 
-    }
-
-    private func ledgerSymbolFor(_ asset: Asset) throws -> String {
-        if asset.type == .currency {
-            return asset.symbol
-        } else {
-            let commodity = ledger.commodities.first {
-                $0.metaData["wealthsimple"] == asset.symbol
+        resultAccounts.forEach { account in
+            DispatchQueue.global(qos: .userInitiated).async {
+                self.wealthsimpleDownloader.getTransactions(in: account, startDate: Date(timeIntervalSinceNow: self.sixtyTwoDays )) { result in
+                    switch result {
+                    case let .failure(error):
+                        self.transactionPublisher.send(completion: .failure(error))
+                    case let .success(transactions):
+                        self.transactionPublisher.send(transactions)
+                    }
+                }
             }
-            guard let symbol = commodity?.symbol else {
-                throw WealthsimpleConversionError.missingCommodity(asset.symbol)
-            }
-            return symbol
         }
-    }
-
-    private func ledgerAccountNameFor(_ account: WealthsimpleAccount, asset: Asset? = nil) throws -> AccountName {
-        let symbol = asset != nil ? asset!.symbol : account.currency
-        let type = account.accountType.rawValue
-        let account = ledger.accounts.first {
-            $0.metaData["wealthsimple-symbol"] == symbol &&
-                $0.metaData["wealthsimple-type"] == type
-        }
-        guard let accountName = account?.name else {
-            throw WealthsimpleConversionError.missingAccount(symbol, type)
-        }
-        return accountName
     }
 
     private func startAuthentication(completion: @escaping (Bool) -> Void) {
@@ -240,7 +258,6 @@ class Model: ObservableObject {
         }
         wealthsimpleDownloader.authenticate { error in
             DispatchQueue.main.async {
-                self.buzy = false
                 self.error = error
                 self.authenticationSuccessful = error == nil
                 completion(error == nil)
@@ -255,18 +272,4 @@ class Model: ObservableObject {
         }
     }
 
-}
-
-extension WealthsimpleConversionError: LocalizedError {
-    public var errorDescription: String? {
-        switch self {
-        case let .missingCommodity(symbol):
-            return "The Commodity \(symbol) was not found in your ledger. Please make sure you add the metadata \"wealthsimple: \"\(symbol)\"\" to it."
-        case let .missingAccount(symbol, type):
-            return """
-                The Account of type \(type) for symbol \(symbol) was not found in your ledger. \
-                Please make sure you add the metadata \"wealthsimple-symbol: \"\(symbol)\" wealthsimple-type: \"\(type)\"\" to it.
-                """
-        }
-    }
 }
