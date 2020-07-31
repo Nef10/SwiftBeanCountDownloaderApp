@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/Nef10/SwiftBeanCountModel.git",
         "state": {
           "branch": null,
-          "revision": "61a3e655f2e9333be06c0a96d7974fa0f1b3434a",
-          "version": "0.1.2"
+          "revision": "1fcdc768240eee7d35514f18ec1276a402f295c8",
+          "version": "0.1.5"
         }
       },
       {
@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/Nef10/SwiftBeanCountParser.git",
         "state": {
           "branch": null,
-          "revision": "81a0181f2c809e2996f01736cc03b4e1c091794d",
-          "version": "0.1.4"
+          "revision": "0791cca4a992a8bd2be315509aeef82887c89ae9",
+          "version": "0.1.7"
         }
       },
       {
