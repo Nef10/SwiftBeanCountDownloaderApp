@@ -38,12 +38,21 @@
         }
       },
       {
+        "package": "SwiftBeanCountWealthsimpleMapper",
+        "repositoryURL": "https://github.com/Nef10/SwiftBeanCountWealthsimpleMapper.git",
+        "state": {
+          "branch": null,
+          "revision": "c613c66d0bae3bc357ac853847d117bf0a484ee5",
+          "version": "1.0.0"
+        }
+      },
+      {
         "package": "WealthsimpleDownloader",
         "repositoryURL": "https://github.com/Nef10/WealthsimpleDownloader.git",
         "state": {
           "branch": null,
-          "revision": "3b213648c5f9cf0fd4d2db7a5de5dd8a70fce4ab",
-          "version": "0.1.1"
+          "revision": "76f32cf930e6bb2ba2eff354bf65624e83957643",
+          "version": "1.0.0"
         }
       }
     ]

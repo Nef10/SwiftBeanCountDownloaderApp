@@ -9,6 +9,7 @@ import Combine
 import KeychainAccess
 import SwiftBeanCountModel
 import SwiftBeanCountParser
+import SwiftBeanCountWealthsimpleMapper
 import SwiftUI
 import Wealthsimple
 

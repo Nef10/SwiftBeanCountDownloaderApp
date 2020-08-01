@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F92AFC1D24D5087F00A058CC /* MetaDataKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92AFC1C24D5087F00A058CC /* MetaDataKeys.swift */; };
-		F92AFC1F24D509D500A058CC /* Wealthsimple.Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92AFC1E24D509D500A058CC /* Wealthsimple.Transaction.swift */; };
+		F92AFC2524D549C000A058CC /* SwiftBeanCountWealthsimpleMapper in Frameworks */ = {isa = PBXBuildFile; productRef = F92AFC2424D549C000A058CC /* SwiftBeanCountWealthsimpleMapper */; };
 		F97B530C24BD917500255DBA /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = F97B530B24BD917500255DBA /* KeychainAccess */; };
 		F97B530F24BEDEA400255DBA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97B530E24BEDEA400255DBA /* Model.swift */; };
 		F97C212E24BC2297006C91C7 /* SwiftBeanCountDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97C212D24BC2297006C91C7 /* SwiftBeanCountDownloader.swift */; };
@@ -17,15 +16,10 @@
 		F97C215724BC36DB006C91C7 /* FileSelectorView in Frameworks */ = {isa = PBXBuildFile; productRef = F97C215624BC36DB006C91C7 /* FileSelectorView */; };
 		F9E8C6F224C41151000A2F66 /* SwiftBeanCountModel in Frameworks */ = {isa = PBXBuildFile; productRef = F9E8C6F124C41151000A2F66 /* SwiftBeanCountModel */; };
 		F9E8C6F724C41CAD000A2F66 /* SwiftBeanCountParser in Frameworks */ = {isa = PBXBuildFile; productRef = F9E8C6F624C41CAD000A2F66 /* SwiftBeanCountParser */; };
-		F9ECEF8124CE35D8004E8CAC /* WealthsimpleLedgerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9ECEF8024CE35D8004E8CAC /* WealthsimpleLedgerMapper.swift */; };
 		F9ECEF8524CE7555004E8CAC /* Wealthsimple in Frameworks */ = {isa = PBXBuildFile; productRef = F9ECEF8424CE7555004E8CAC /* Wealthsimple */; };
-		F9ECEF8724CFCD97004E8CAC /* LedgerLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9ECEF8624CFCD97004E8CAC /* LedgerLookup.swift */; };
-		F9ECEF8924CFD38A004E8CAC /* WealthsimpleConversionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9ECEF8824CFD38A004E8CAC /* WealthsimpleConversionError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F92AFC1C24D5087F00A058CC /* MetaDataKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaDataKeys.swift; sourceTree = "<group>"; };
-		F92AFC1E24D509D500A058CC /* Wealthsimple.Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wealthsimple.Transaction.swift; sourceTree = "<group>"; };
 		F97B530E24BEDEA400255DBA /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		F97C212A24BC2297006C91C7 /* SwiftBeanCountDownloaderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBeanCountDownloaderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F97C212D24BC2297006C91C7 /* SwiftBeanCountDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBeanCountDownloader.swift; sourceTree = "<group>"; };
@@ -33,9 +27,6 @@
 		F97C213124BC2299006C91C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F97C213624BC2299006C91C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F97C213724BC2299006C91C7 /* SwiftBeanCountDownloaderApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftBeanCountDownloaderApp.entitlements; sourceTree = "<group>"; };
-		F9ECEF8024CE35D8004E8CAC /* WealthsimpleLedgerMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WealthsimpleLedgerMapper.swift; sourceTree = "<group>"; };
-		F9ECEF8624CFCD97004E8CAC /* LedgerLookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedgerLookup.swift; sourceTree = "<group>"; };
-		F9ECEF8824CFD38A004E8CAC /* WealthsimpleConversionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WealthsimpleConversionError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +36,7 @@
 			files = (
 				F9E8C6F224C41151000A2F66 /* SwiftBeanCountModel in Frameworks */,
 				F97C215724BC36DB006C91C7 /* FileSelectorView in Frameworks */,
+				F92AFC2524D549C000A058CC /* SwiftBeanCountWealthsimpleMapper in Frameworks */,
 				F9E8C6F724C41CAD000A2F66 /* SwiftBeanCountParser in Frameworks */,
 				F9ECEF8524CE7555004E8CAC /* Wealthsimple in Frameworks */,
 				F97B530C24BD917500255DBA /* KeychainAccess in Frameworks */,
@@ -77,11 +69,6 @@
 				F97C212D24BC2297006C91C7 /* SwiftBeanCountDownloader.swift */,
 				F97C212F24BC2297006C91C7 /* ContentView.swift */,
 				F97B530E24BEDEA400255DBA /* Model.swift */,
-				F92AFC1E24D509D500A058CC /* Wealthsimple.Transaction.swift */,
-				F9ECEF8024CE35D8004E8CAC /* WealthsimpleLedgerMapper.swift */,
-				F9ECEF8624CFCD97004E8CAC /* LedgerLookup.swift */,
-				F9ECEF8824CFD38A004E8CAC /* WealthsimpleConversionError.swift */,
-				F92AFC1C24D5087F00A058CC /* MetaDataKeys.swift */,
 				F97C213124BC2299006C91C7 /* Assets.xcassets */,
 				F97C213624BC2299006C91C7 /* Info.plist */,
 				F97C213724BC2299006C91C7 /* SwiftBeanCountDownloaderApp.entitlements */,
@@ -119,6 +106,7 @@
 				F9E8C6F124C41151000A2F66 /* SwiftBeanCountModel */,
 				F9E8C6F624C41CAD000A2F66 /* SwiftBeanCountParser */,
 				F9ECEF8424CE7555004E8CAC /* Wealthsimple */,
+				F92AFC2424D549C000A058CC /* SwiftBeanCountWealthsimpleMapper */,
 			);
 			productName = SwiftBeanCountDownloaderApp;
 			productReference = F97C212A24BC2297006C91C7 /* SwiftBeanCountDownloaderApp.app */;
@@ -153,6 +141,7 @@
 				F97B530A24BD917500255DBA /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				F9E8C6F024C41151000A2F66 /* XCRemoteSwiftPackageReference "SwiftBeanCountModel" */,
 				F9E8C6F524C41CAD000A2F66 /* XCRemoteSwiftPackageReference "SwiftBeanCountParser" */,
+				F92AFC2324D549C000A058CC /* XCRemoteSwiftPackageReference "SwiftBeanCountWealthsimpleMapper" */,
 			);
 			productRefGroup = F97C212B24BC2297006C91C7 /* Products */;
 			projectDirPath = "";
@@ -200,12 +189,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9ECEF8124CE35D8004E8CAC /* WealthsimpleLedgerMapper.swift in Sources */,
-				F9ECEF8724CFCD97004E8CAC /* LedgerLookup.swift in Sources */,
 				F97B530F24BEDEA400255DBA /* Model.swift in Sources */,
-				F9ECEF8924CFD38A004E8CAC /* WealthsimpleConversionError.swift in Sources */,
-				F92AFC1D24D5087F00A058CC /* MetaDataKeys.swift in Sources */,
-				F92AFC1F24D509D500A058CC /* Wealthsimple.Transaction.swift in Sources */,
 				F97C213024BC2297006C91C7 /* ContentView.swift in Sources */,
 				F97C212E24BC2297006C91C7 /* SwiftBeanCountDownloader.swift in Sources */,
 			);
@@ -397,12 +381,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F92AFC2324D549C000A058CC /* XCRemoteSwiftPackageReference "SwiftBeanCountWealthsimpleMapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Nef10/SwiftBeanCountWealthsimpleMapper.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		F97B530724BD912600255DBA /* XCRemoteSwiftPackageReference "WealthsimpleDownloader" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Nef10/WealthsimpleDownloader.git";
 			requirement = {
-				kind = exactVersion;
-				version = 0.1.1;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		F97B530A24BD917500255DBA /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
@@ -440,6 +432,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F92AFC2424D549C000A058CC /* SwiftBeanCountWealthsimpleMapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F92AFC2324D549C000A058CC /* XCRemoteSwiftPackageReference "SwiftBeanCountWealthsimpleMapper" */;
+			productName = SwiftBeanCountWealthsimpleMapper;
+		};
 		F97B530B24BD917500255DBA /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F97B530A24BD917500255DBA /* XCRemoteSwiftPackageReference "KeychainAccess" */;
