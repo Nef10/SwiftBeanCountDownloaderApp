@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F92AFC2524D549C000A058CC /* SwiftBeanCountWealthsimpleMapper in Frameworks */ = {isa = PBXBuildFile; productRef = F92AFC2424D549C000A058CC /* SwiftBeanCountWealthsimpleMapper */; };
+		F92AFC2D24D54CAA00A058CC /* SwiftBeanCountDownloaderAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92AFC2C24D54CAA00A058CC /* SwiftBeanCountDownloaderAppUITests.swift */; };
+		F92AFC3B24D54CFC00A058CC /* SwiftBeanCountDownloaderAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92AFC3A24D54CFC00A058CC /* SwiftBeanCountDownloaderAppTests.swift */; };
 		F97B530C24BD917500255DBA /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = F97B530B24BD917500255DBA /* KeychainAccess */; };
 		F97B530F24BEDEA400255DBA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97B530E24BEDEA400255DBA /* Model.swift */; };
 		F97C212E24BC2297006C91C7 /* SwiftBeanCountDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97C212D24BC2297006C91C7 /* SwiftBeanCountDownloader.swift */; };
@@ -19,7 +21,30 @@
 		F9ECEF8524CE7555004E8CAC /* Wealthsimple in Frameworks */ = {isa = PBXBuildFile; productRef = F9ECEF8424CE7555004E8CAC /* Wealthsimple */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F92AFC2F24D54CAA00A058CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F97C212224BC2297006C91C7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F97C212924BC2297006C91C7;
+			remoteInfo = SwiftBeanCountDownloaderApp;
+		};
+		F92AFC3D24D54CFC00A058CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F97C212224BC2297006C91C7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F97C212924BC2297006C91C7;
+			remoteInfo = SwiftBeanCountDownloaderApp;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		F92AFC2A24D54CAA00A058CC /* SwiftBeanCountDownloaderAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftBeanCountDownloaderAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F92AFC2C24D54CAA00A058CC /* SwiftBeanCountDownloaderAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBeanCountDownloaderAppUITests.swift; sourceTree = "<group>"; };
+		F92AFC2E24D54CAA00A058CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F92AFC3824D54CFC00A058CC /* SwiftBeanCountDownloaderAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftBeanCountDownloaderAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F92AFC3A24D54CFC00A058CC /* SwiftBeanCountDownloaderAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBeanCountDownloaderAppTests.swift; sourceTree = "<group>"; };
+		F92AFC3C24D54CFC00A058CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F97B530E24BEDEA400255DBA /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		F97C212A24BC2297006C91C7 /* SwiftBeanCountDownloaderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBeanCountDownloaderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F97C212D24BC2297006C91C7 /* SwiftBeanCountDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBeanCountDownloader.swift; sourceTree = "<group>"; };
@@ -30,6 +55,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F92AFC2724D54CAA00A058CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F92AFC3524D54CFC00A058CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F97C212724BC2297006C91C7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -46,10 +85,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F92AFC2B24D54CAA00A058CC /* SwiftBeanCountDownloaderAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F92AFC2C24D54CAA00A058CC /* SwiftBeanCountDownloaderAppUITests.swift */,
+				F92AFC2E24D54CAA00A058CC /* Info.plist */,
+			);
+			path = SwiftBeanCountDownloaderAppUITests;
+			sourceTree = "<group>";
+		};
+		F92AFC3924D54CFC00A058CC /* SwiftBeanCountDownloaderAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				F92AFC3A24D54CFC00A058CC /* SwiftBeanCountDownloaderAppTests.swift */,
+				F92AFC3C24D54CFC00A058CC /* Info.plist */,
+			);
+			path = SwiftBeanCountDownloaderAppTests;
+			sourceTree = "<group>";
+		};
 		F97C212124BC2297006C91C7 = {
 			isa = PBXGroup;
 			children = (
 				F97C212C24BC2297006C91C7 /* SwiftBeanCountDownloaderApp */,
+				F92AFC2B24D54CAA00A058CC /* SwiftBeanCountDownloaderAppUITests */,
+				F92AFC3924D54CFC00A058CC /* SwiftBeanCountDownloaderAppTests */,
 				F97C212B24BC2297006C91C7 /* Products */,
 				F97C213F24BC25DE006C91C7 /* Frameworks */,
 			);
@@ -59,6 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				F97C212A24BC2297006C91C7 /* SwiftBeanCountDownloaderApp.app */,
+				F92AFC2A24D54CAA00A058CC /* SwiftBeanCountDownloaderAppUITests.xctest */,
+				F92AFC3824D54CFC00A058CC /* SwiftBeanCountDownloaderAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -86,6 +147,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F92AFC2924D54CAA00A058CC /* SwiftBeanCountDownloaderAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F92AFC3124D54CAA00A058CC /* Build configuration list for PBXNativeTarget "SwiftBeanCountDownloaderAppUITests" */;
+			buildPhases = (
+				F92AFC2624D54CAA00A058CC /* Sources */,
+				F92AFC2724D54CAA00A058CC /* Frameworks */,
+				F92AFC2824D54CAA00A058CC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F92AFC3024D54CAA00A058CC /* PBXTargetDependency */,
+			);
+			name = SwiftBeanCountDownloaderAppUITests;
+			productName = SwiftBeanCountDownloaderAppUITests;
+			productReference = F92AFC2A24D54CAA00A058CC /* SwiftBeanCountDownloaderAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		F92AFC3724D54CFC00A058CC /* SwiftBeanCountDownloaderAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F92AFC3F24D54CFC00A058CC /* Build configuration list for PBXNativeTarget "SwiftBeanCountDownloaderAppTests" */;
+			buildPhases = (
+				F92AFC3424D54CFC00A058CC /* Sources */,
+				F92AFC3524D54CFC00A058CC /* Frameworks */,
+				F92AFC3624D54CFC00A058CC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F92AFC3E24D54CFC00A058CC /* PBXTargetDependency */,
+			);
+			name = SwiftBeanCountDownloaderAppTests;
+			productName = SwiftBeanCountDownloaderAppTests;
+			productReference = F92AFC3824D54CFC00A058CC /* SwiftBeanCountDownloaderAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F97C212924BC2297006C91C7 /* SwiftBeanCountDownloaderApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F97C213A24BC2299006C91C7 /* Build configuration list for PBXNativeTarget "SwiftBeanCountDownloaderApp" */;
@@ -121,6 +218,14 @@
 				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
+					F92AFC2924D54CAA00A058CC = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = F97C212924BC2297006C91C7;
+					};
+					F92AFC3724D54CFC00A058CC = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = F97C212924BC2297006C91C7;
+					};
 					F97C212924BC2297006C91C7 = {
 						CreatedOnToolsVersion = 12.0;
 					};
@@ -148,11 +253,27 @@
 			projectRoot = "";
 			targets = (
 				F97C212924BC2297006C91C7 /* SwiftBeanCountDownloaderApp */,
+				F92AFC3724D54CFC00A058CC /* SwiftBeanCountDownloaderAppTests */,
+				F92AFC2924D54CAA00A058CC /* SwiftBeanCountDownloaderAppUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F92AFC2824D54CAA00A058CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F92AFC3624D54CFC00A058CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F97C212824BC2297006C91C7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -185,6 +306,22 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F92AFC2624D54CAA00A058CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F92AFC2D24D54CAA00A058CC /* SwiftBeanCountDownloaderAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F92AFC3424D54CFC00A058CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F92AFC3B24D54CFC00A058CC /* SwiftBeanCountDownloaderAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F97C212624BC2297006C91C7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -197,7 +334,102 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		F92AFC3024D54CAA00A058CC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F97C212924BC2297006C91C7 /* SwiftBeanCountDownloaderApp */;
+			targetProxy = F92AFC2F24D54CAA00A058CC /* PBXContainerItemProxy */;
+		};
+		F92AFC3E24D54CFC00A058CC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F97C212924BC2297006C91C7 /* SwiftBeanCountDownloaderApp */;
+			targetProxy = F92AFC3D24D54CFC00A058CC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		F92AFC3224D54CAA00A058CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = SwiftBeanCountDownloaderAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.steffenkoette.SwiftBeanCountDownloaderAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = SwiftBeanCountDownloaderApp;
+			};
+			name = Debug;
+		};
+		F92AFC3324D54CAA00A058CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = SwiftBeanCountDownloaderAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.steffenkoette.SwiftBeanCountDownloaderAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = SwiftBeanCountDownloaderApp;
+			};
+			name = Release;
+		};
+		F92AFC4024D54CFC00A058CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SwiftBeanCountDownloaderAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.nef10.SwiftBeanCountDownloaderAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftBeanCountDownloaderApp.app/Contents/MacOS/SwiftBeanCountDownloaderApp";
+			};
+			name = Debug;
+		};
+		F92AFC4124D54CFC00A058CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SwiftBeanCountDownloaderAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.nef10.SwiftBeanCountDownloaderAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftBeanCountDownloaderApp.app/Contents/MacOS/SwiftBeanCountDownloaderApp";
+			};
+			name = Release;
+		};
 		F97C213824BC2299006C91C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -319,6 +551,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SwiftBeanCountDownloaderApp/SwiftBeanCountDownloaderApp.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -329,7 +562,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.16;
-				PRODUCT_BUNDLE_IDENTIFIER = de.steffenkoette.SwiftBeanCountDownloaderApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.nef10.SwiftBeanCountDownloaderApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -341,6 +574,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SwiftBeanCountDownloaderApp/SwiftBeanCountDownloaderApp.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -351,7 +585,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.16;
-				PRODUCT_BUNDLE_IDENTIFIER = de.steffenkoette.SwiftBeanCountDownloaderApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.nef10.SwiftBeanCountDownloaderApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -360,6 +594,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F92AFC3124D54CAA00A058CC /* Build configuration list for PBXNativeTarget "SwiftBeanCountDownloaderAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F92AFC3224D54CAA00A058CC /* Debug */,
+				F92AFC3324D54CAA00A058CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F92AFC3F24D54CFC00A058CC /* Build configuration list for PBXNativeTarget "SwiftBeanCountDownloaderAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F92AFC4024D54CFC00A058CC /* Debug */,
+				F92AFC4124D54CFC00A058CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F97C212524BC2297006C91C7 /* Build configuration list for PBXProject "SwiftBeanCountDownloaderApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
