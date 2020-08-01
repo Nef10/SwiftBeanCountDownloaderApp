@@ -18,8 +18,8 @@ jobs:
     - name: Tests
       uses: sersoft-gmbh/xcodebuild-action@v1
       with:
-        project: SwiftBeanCountImporterApp.xcodeproj
-        scheme: SwiftBeanCountImporterApp
+        project: SwiftBeanCountDownloaderApp.xcodeproj
+        scheme: SwiftBeanCountDownloaderApp
         destination: platform=macOS
         action: test
   swiftlint:
