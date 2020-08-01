@@ -12,8 +12,8 @@ This is a macOS application to download data from Financial Institutions and con
 
 Currently the following downloads are supported:
 
-* Wealthsimple (not Trade, only Canadian accounts)
+* Wealthsimple (not Trade): Please add required meta data to your Beancount file following [this](https://github.com/Nef10/SwiftBeanCountWealthsimpleMapper#beancount-meta-data) documentation. Limitations can be found [here](https://github.com/Nef10/SwiftBeanCountWealthsimpleMapper#limitations) and [here](https://github.com/Nef10/WealthsimpleDownloader#limitations).
 
 ## Usage
 
-Currently there is no distributed version of the app, so please clone/download the repository and build the app yourself.
+Currently there is no distributed version of the app, so please clone/download the repository and build the app yourself. Please note that macOS Big Sur is required.
