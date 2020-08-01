@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F92AFC1D24D5087F00A058CC /* MetaDataKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92AFC1C24D5087F00A058CC /* MetaDataKeys.swift */; };
+		F92AFC1F24D509D500A058CC /* Wealthsimple.Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92AFC1E24D509D500A058CC /* Wealthsimple.Transaction.swift */; };
 		F97B530C24BD917500255DBA /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = F97B530B24BD917500255DBA /* KeychainAccess */; };
 		F97B530F24BEDEA400255DBA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97B530E24BEDEA400255DBA /* Model.swift */; };
 		F97C212E24BC2297006C91C7 /* SwiftBeanCountDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97C212D24BC2297006C91C7 /* SwiftBeanCountDownloader.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F92AFC1C24D5087F00A058CC /* MetaDataKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaDataKeys.swift; sourceTree = "<group>"; };
+		F92AFC1E24D509D500A058CC /* Wealthsimple.Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wealthsimple.Transaction.swift; sourceTree = "<group>"; };
 		F97B530E24BEDEA400255DBA /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		F97C212A24BC2297006C91C7 /* SwiftBeanCountDownloaderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBeanCountDownloaderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F97C212D24BC2297006C91C7 /* SwiftBeanCountDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBeanCountDownloader.swift; sourceTree = "<group>"; };
@@ -73,9 +77,11 @@
 				F97C212D24BC2297006C91C7 /* SwiftBeanCountDownloader.swift */,
 				F97C212F24BC2297006C91C7 /* ContentView.swift */,
 				F97B530E24BEDEA400255DBA /* Model.swift */,
+				F92AFC1E24D509D500A058CC /* Wealthsimple.Transaction.swift */,
 				F9ECEF8024CE35D8004E8CAC /* WealthsimpleLedgerMapper.swift */,
 				F9ECEF8624CFCD97004E8CAC /* LedgerLookup.swift */,
 				F9ECEF8824CFD38A004E8CAC /* WealthsimpleConversionError.swift */,
+				F92AFC1C24D5087F00A058CC /* MetaDataKeys.swift */,
 				F97C213124BC2299006C91C7 /* Assets.xcassets */,
 				F97C213624BC2299006C91C7 /* Info.plist */,
 				F97C213724BC2299006C91C7 /* SwiftBeanCountDownloaderApp.entitlements */,
@@ -198,6 +204,8 @@
 				F9ECEF8724CFCD97004E8CAC /* LedgerLookup.swift in Sources */,
 				F97B530F24BEDEA400255DBA /* Model.swift in Sources */,
 				F9ECEF8924CFD38A004E8CAC /* WealthsimpleConversionError.swift in Sources */,
+				F92AFC1D24D5087F00A058CC /* MetaDataKeys.swift in Sources */,
+				F92AFC1F24D509D500A058CC /* Wealthsimple.Transaction.swift in Sources */,
 				F97C213024BC2297006C91C7 /* ContentView.swift in Sources */,
 				F97C212E24BC2297006C91C7 /* SwiftBeanCountDownloader.swift in Sources */,
 			);
@@ -418,7 +426,7 @@
 			repositoryURL = "https://github.com/Nef10/SwiftBeanCountModel.git";
 			requirement = {
 				kind = exactVersion;
-				version = 0.1.5;
+				version = 0.1.6;
 			};
 		};
 		F9E8C6F524C41CAD000A2F66 /* XCRemoteSwiftPackageReference "SwiftBeanCountParser" */ = {
@@ -426,7 +434,7 @@
 			repositoryURL = "https://github.com/Nef10/SwiftBeanCountParser.git";
 			requirement = {
 				kind = exactVersion;
-				version = 0.1.7;
+				version = 0.1.8;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

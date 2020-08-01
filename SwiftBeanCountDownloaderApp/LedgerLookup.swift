@@ -32,7 +32,7 @@ struct LedgerLookup {
 
     func doesTransactionExistInLedger(_ transaction: SwiftBeanCountModel.Transaction) -> Bool {
         self.ledger.transactions.contains {
-            $0.metaData.metaData[WealthsimpleLedgerMapper.idMetaDataKey] == transaction.metaData.metaData[WealthsimpleLedgerMapper.idMetaDataKey]
+            $0.metaData.metaData[MetaDataKeys.id] == transaction.metaData.metaData[MetaDataKeys.id]
         }
     }
 
@@ -96,5 +96,12 @@ struct LedgerLookup {
             throw WealthsimpleConversionError.missingAccount(symbol, type.rawValue, accountType)
         }
         return accountName
+    }
+
+    func ledgerAccountCommoditySymbol(of account: AccountName) -> String? {
+        let account = ledger.accounts.first {
+            $0.name == account
+        }
+        return account?.commoditySymbol
     }
 }

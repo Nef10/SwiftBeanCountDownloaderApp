@@ -96,3 +96,5 @@ function_body_length: 30
 identifier_name:
   max_length:
     warning: 45
+  excluded:
+    - id
