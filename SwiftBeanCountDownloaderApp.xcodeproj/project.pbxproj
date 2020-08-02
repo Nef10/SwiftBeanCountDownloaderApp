@@ -638,7 +638,7 @@
 			repositoryURL = "https://github.com/Nef10/SwiftBeanCountWealthsimpleMapper.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 1.0.1;
 			};
 		};
 		F97B530724BD912600255DBA /* XCRemoteSwiftPackageReference "WealthsimpleDownloader" */ = {
