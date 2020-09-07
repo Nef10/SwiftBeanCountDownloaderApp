@@ -8,12 +8,6 @@
 import FileSelectorView
 import SwiftUI
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
-
 struct ContentView: View {
 
     @State private var ledgerURL: URL?
@@ -98,5 +92,11 @@ struct ContentView: View {
         }
         .padding()
         .frame(minWidth: 150, idealWidth: 200, maxWidth: .infinity, minHeight: 175, idealHeight: 175, maxHeight: .infinity)
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
     }
 }
