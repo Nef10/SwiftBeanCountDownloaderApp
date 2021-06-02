@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess.git",
         "state": {
           "branch": null,
-          "revision": "654d52d30f3dd4592e944c3e0bccb53178c992f6",
-          "version": "4.2.1"
+          "revision": "84e546727d66f1adc5439debad16270d0fdd04e7",
+          "version": "4.2.2"
         }
       },
       {
@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/Nef10/SwiftBeanCountWealthsimpleMapper.git",
         "state": {
           "branch": null,
-          "revision": "e0a604cb513914f8fa965249a7f223346169ef03",
-          "version": "1.1.0"
+          "revision": "390c52d76f9e740fcf254d0e5754cbc0fef8ffed",
+          "version": "1.2.0"
         }
       },
       {
@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/Nef10/WealthsimpleDownloader.git",
         "state": {
           "branch": null,
-          "revision": "76f32cf930e6bb2ba2eff354bf65624e83957643",
-          "version": "1.0.0"
+          "revision": "767caf3189a66753c0d0aef1f14a5d8022c94410",
+          "version": "1.0.1"
         }
       }
     ]
