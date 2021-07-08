@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/Nef10/SwiftBeanCountWealthsimpleMapper.git",
         "state": {
           "branch": null,
-          "revision": "acfa762eea6437e2da943bb581914f60e18900e1",
-          "version": "1.2.1"
+          "revision": "dc014dcb07886f1b654a9df916c1c228c462ef58",
+          "version": "1.2.3"
         }
       },
       {
@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/Nef10/WealthsimpleDownloader.git",
         "state": {
           "branch": null,
-          "revision": "2d6be25bb6f5cccbd9f61a91cb2d20e1cfcb970e",
-          "version": "1.0.4"
+          "revision": "6de9af60ab80633e1efcc64522fe830aedaabb23",
+          "version": "1.0.5"
         }
       }
     ]
